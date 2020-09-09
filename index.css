@@ -1,0 +1,8 @@
+body {
+    display: grid;
+    place-items: center;
+    background: limegreen;
+    color: rgb(144, 92, 33);
+    font-weight: 700;
+    font-size: 3rem;
+}
