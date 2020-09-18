@@ -1,0 +1,8 @@
+* {
+    background: cyan;
+}
+
+.conatiner-fluid {
+    background: blueviolet;
+    padding: 0 2rem;
+}

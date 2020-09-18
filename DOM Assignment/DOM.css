@@ -1,0 +1,11 @@
+* {
+    background-color: cornsilk;
+}
+
+.container-fluid {
+    color: black;
+}
+
+table tr th {
+    text-align: center;
+}

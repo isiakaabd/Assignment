@@ -19,6 +19,12 @@ function calculator(number1, number2) {
     while (!calcOperatioon || calcOperatioon > 4)
 
     // checking with the if-statement
+    // var love = function (calcOperatioon){
+    //     if calcOperatioon===
+    // }
+    // 
+    // 
+    //     
     var operation, display;
     if (calcOperatioon === 1) {
         operation = (number1 + number2);
