@@ -18,11 +18,11 @@
     <main class="container-fluid">
         <table>
             <tr>
-                <th colspan="2">SN</th>
-                <th colspan="3" rowspan="2">Company Name</th>
-                <th colspan="3">Company Phone</th>
-                <th colspan="3">Company Email</th>
-                <th colspan="3">Location</th>
+                <th colspan="4">SN</th>
+                <th colspan="8" rowspan="2">Company Name</th>
+                <th colspan="8">Company Phone</th>
+                <th colspan="8">Company Email</th>
+                <th colspan="8">Location</th>
             </tr>
             <tbody id="content">
 
@@ -54,14 +54,14 @@
         for (i = 0; i <= companies.length; i++) {
             document.getElementById("content").innerHTML += `
         <tr>
-            <td colspan=2>${i + 1}</td>
-            <td colspan=2>${companies[i].name}</td>
-            <td colspan=2>${companies[i].email}</td>
-            <td colspan=2>${companies[i].phone}</td>
-            <td colspan=2>${companies[i].location}</td>
+            <td colspan=4>${i + 1}</td>
+            <td colspan=8>${companies[i].name}</td>
+            <td colspan=8>${companies[i].phone}</td>
+            <td colspan=8>${companies[i].email}</td>
+            <td colspan=8>${companies[i].location}</td>
         </tr>
-       `;
-        }
+       `
+        };
     </script>
 </body>
 

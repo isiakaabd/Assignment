@@ -6,6 +6,7 @@
     color: black;
 }
 
-table tr th {
+table {
     text-align: center;
+    border-collapse: separate;
 }
