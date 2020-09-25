@@ -1,0 +1,351 @@
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Ubuntu&display=swap');
+            /* THE FONT-FAMILY */
+            /* HOW TO USE THE FONT-FA ILY */
+            /*font-family: 'Roboto Condensed',
+                                                     /* RESET */
+            /* *,
+             ::before,
+             ::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Ubuntu', sans-serif, 'Roboto', sans-serif;
+                line-height: auto;
+                font-size: 15px;
+                background: #0000;
+                font-family: 'Ubuntu', sans-serif;
+            } */
+            
+            *,
+             ::before,
+             ::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            /* NAVBAR STYLING */
+            
+            header {
+                background: rgba(0, 0, 0, 0.96);
+                font-family: 'Ubuntu', sans-serif;
+                height: 75px;
+                width: 100%;
+            }
+            
+            #navbar .navbar-content {
+                display: flex;
+                justify-content: space-between;
+                margin: auto;
+                max-width: 96%;
+            }
+            /* NAVBAR LOGO STYLING*/
+            
+            .navbar-content .content-1 img {
+                position: relative;
+                top: 15px;
+            }
+            
+            #navbar .openMenu {
+                font-size: 2rem;
+                color: #ffe4c4;
+                margin: 20px;
+                cursor: pointer;
+                display: none;
+            }
+            /* CONTENT-2 STYLING */
+            
+            .navbar-content .content-2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 120px;
+            }
+            
+            .navbar-content .content-2 .nav-item-1 ul {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                top: 25px;
+            }
+            
+            .navbar-content .content-2 .nav-item-1 li {
+                list-style-type: none;
+            }
+            
+            .navbar-content .content-2 .nav-item-1 a {
+                text-decoration: none;
+                color: #ffffff;
+                padding: 5px;
+                font-size: 15px;
+            }
+            
+            .navbar-content .content-2 .nav-item-1 a:hover {
+                color: #EBBA32;
+            }
+            
+            .navbar-content .content-2 .nav-item-1 .active {
+                color: #EBBA32;
+            }
+            
+            .navbar-content .content-2 .nav-item-2 ul {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                top: 25px;
+            }
+            
+            .navbar-content .content-2 .nav-item-2 li {
+                list-style-type: none;
+            }
+            
+            .navbar-content .content-2 .nav-item-2 a {
+                text-decoration: none;
+                color: #ffffff;
+                padding: 20px;
+                font-size: 15px;
+            }
+            
+            .navbar-content .content-2 .nav-item-2 .active {
+                background: #EBBA32;
+                color: #ffffff;
+                padding: 15px;
+                border-radius: 5px;
+            }
+            
+            #navbar .closeMenu {
+                font-size: 2rem;
+                color: #ffe4c4;
+                cursor: pointer;
+                display: none;
+            }
+            /* contact Us */
+            
+            .contact-us {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                background-color: #EBBA32;
+                opacity: 0.9;
+                padding-top: 2rem;
+            }
+            
+            .contact-us h2 {
+                font-size: 3rem;
+                text-transform: uppercase;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .contact-us.contact-container {
+                display: block;
+                padding-bottom: 12px;
+            }
+            
+            label {
+                margin-bottom: 10px;
+                padding: 12px;
+            }
+            
+            .contact-container input,
+            textarea {
+                width: 25rem;
+                /* border-bottom-style: double; */
+                border-top-style: none;
+                border-right-style: none;
+                border-left-style: none;
+                border-bottom-style: groove;
+                border-width: 2px;
+                /* height: 12px; */
+                margin-bottom: 12px;
+                padding: 12px;
+            }
+            
+            .contact-container form button {
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                width: 100px;
+                margin-left: 70px;
+                margin: auto;
+                padding: 8px 12px;
+                align-self: center;
+                border-radius: 8px;
+                transition: all 2s ease-in-out;
+                background: rgba(0, 0, 0, 0.96);
+                color: #fff;
+                font-weight: 700px;
+                box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.96);
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .contact-container form button:hover {
+                transform: scale(0.9);
+                color: #EBBA32;
+            }
+            
+            .contact-container input:focus,
+            textarea:focus {
+                outline: none;
+                background: black;
+                color: white;
+                border: rgba(0, 0, 0, 0.96) 2px solid;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.96);
+            }
+            /* FOOTER STYLING */
+            /* FOOTER STYLING */
+            
+            footer {
+                background: #000000;
+            }
+            
+            .footer-container {
+                margin: auto;
+                max-width: 80%;
+            }
+            
+            .footer-container .subscribe {
+                text-align: center;
+                padding: 10px;
+            }
+            
+            .footer-container .subscribe h1 {
+                font-family: 'Ubuntu', sans-serif;
+                color: #EBBA32;
+                font-size: 15px;
+                padding: 10px;
+            }
+            
+            .footer-container .subscribe input {
+                padding: 5px;
+            }
+            
+            .footer-container .subscribe button {
+                padding: 5px;
+                background: #EBBA32;
+                color: #000000;
+            }
+            
+            .footer-container .footer-flex {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                padding: 12px;
+            }
+            
+            .footer-container .footer-flex hr {
+                color: #EBBA32;
+            }
+            
+            .footer-container .footer-flex .social-icon i {
+                color: #EBBA32;
+                padding: 10px;
+            }
+            
+            .footer-container .footer-flex .social-icon i:hover {
+                font-size: 18px;
+            }
+            
+            .footer-container .footer-flex .elite {
+                padding-top: 10px;
+                font-family: 'Ubuntu', sans-serif;
+                font-size: 13px;
+                color: #EBBA32;
+            }
+            /* ABOUT SECTION STYLING */
+            /* RESPONSIVENESS */
+            /* Tablet */
+            
+            @media (max-width:600px) {
+                /* HAMBURGER MENU */
+                #navbar .content-2 {
+                    height: 300px;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    z-index: 10;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    background: #000000;
+                    color: #EBBA32;
+                    transition: top 1s ease;
+                    padding: 25px 300px;
+                    margin-top: 70px;
+                    display: none;
+                }
+                #navbar .content-2 .nav-item-1 ul {
+                    display: flex;
+                    flex-direction: column;
+                }
+                #navbar .content-2 .nav-item-2 ul {
+                    display: flex;
+                    flex-direction: column;
+                }
+                #navbar .content-2 li {
+                    padding: 12px;
+                }
+                #navbar .content-2 .closeMenu {
+                    display: block;
+                    position: absolute;
+                    top: 20px;
+                    right: 30px;
+                }
+                #navbar .content-2 .closeMenu i {
+                    color: #EBBA32;
+                }
+                #navbar .openMenu {
+                    display: block;
+                    top: 20px;
+                    left: 0;
+                }
+            }
+            
+            @media (max-width:768px) {
+                /* HAMBURGER MENU */
+                #navbar .content-2 {
+                    height: 300px;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    z-index: 10;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    background: #000000;
+                    color: #EBBA32;
+                    transition: top 1s ease;
+                    padding: 25px 200px;
+                    margin-top: 70px;
+                    display: none;
+                }
+            }
+            /* mobile responsiveness  for contact us*/
+            
+            @media (max-width:600px) {
+                .contact-container {
+                    display: block;
+                    padding-bottom: 12px;
+                }
+                label {
+                    margin-bottom: 7px;
+                    padding: 8px 12px;
+                }
+                .contact-container input,
+                textarea {
+                    width: 100%;
+                    margin: auto;
+                    padding: 6px;
+                }
+                .contact-container form button {
+                    text-align: center;
+                    width: 100px;
+                    margin-top: .8rem;
+                    display: flex;
+                    justify-content: center;
+                }
+                .contact-us h2 {
+                    font-size: 2rem;
+                    text-align: center;
+                }
+            }

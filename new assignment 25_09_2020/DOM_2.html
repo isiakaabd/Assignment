@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap  -->
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <button onclick="newUser()" class="btn btn-primary btn-block btn-lg">Add+</button>
+    <hr>
+
+    <div id="users">
+
+
+    </div>
+    <style>
+        body {
+            Background-image: linear-gradient(110deg, blue 50%, red 40%);
+        }
+    </style>
+
+    <script>
+        let internalUsers = [{
+            fullname: "Abdulahi",
+            email: "isiakaabd2018@gmail.com",
+            pics: "/2.jpg",
+            phone: 07033637349
+        }, {
+            fullname: "Abdulahi Abdulahi",
+            email: "Abdulahijnr@gmail.com",
+            pics: "/1.jpg",
+            phone: 12236
+
+        }]
+
+
+        displayUsers()
+
+
+
+        function displayUsers() {
+            usersCont = " ";
+            for (i = 0; i < internalUsers.length; i++) {
+                usersCont += `
+    
+        
+            <div class="container bg-success" style= "width:300px;display:grid; place-items:center; align-items:center; border:3px solid green;padding-bottom:20px;border-radius:8px; box-shadow:5px 5px 5px 2px black">
+               
+      <img class="img-thumbnail"  src= "${internalUsers[i].pics}" style= "max-height:100px"><br>
+      <strong>full-name:</strong>  ${internalUsers[i].fullname}<br>
+    
+       <strong>Email:</strong>  ${internalUsers[i].email}<br>
+         
+      <strong>Phone:</strong>  ${internalUsers[i].phone}<br>
+      <div style= "display:flex; gap:30px" >
+      </div>
+    
+    </div><hr>`
+
+
+
+
+            }
+
+
+
+            document.getElementById("users").innerHTML = usersCont
+            localStorage.setItem("myStorage", JSON.stringify(internalUsers));
+        }
+
+
+
+
+
+        function newUser() {
+            let user = {
+                fullname: prompt("enter your name", "Nusaybah"),
+                email: prompt("enter your email", "isiakaaabd@gmail.com"),
+                phone: parseInt(prompt("enter your phone-number", "07033637349"))
+            }
+            internalUsers.unshift(user);
+            localStorage.setItem("myStorage", JSON.stringify(internalUsers));
+
+            displayUsers()
+
+        }
+
+
+        function redBtn(id) {
+            // confirm("are you sure?");
+            // if (confirm === true) {
+            internalUsers.splice(id, 1)
+            displayUsers()
+
+            // }
+            //  else {
+            //     alert("thank you")
+            // }
+        }
+        localStorage.setItem("myStorage", JSON.stringify(internalUsers))
+
+
+        function editBtn(id) {
+
+            let userEdit = {
+
+                fullname: prompt("enter your name", internalUsers[id].fullname),
+                email: prompt("enter your email", internalUsers[id].email),
+                phone: parseInt(prompt("enter your phone-number", internalUsers[id].phone))
+            }
+            internalUsers[id] = userEdit
+            localStorage.setItem("myStorage", JSON.stringify(internalUsers));
+            displayUsers()
+
+        }
+    </script>
+</body>
+
+</html>
