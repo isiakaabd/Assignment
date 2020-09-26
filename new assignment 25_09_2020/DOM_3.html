@@ -11,44 +11,61 @@
 </head>
 
 <body>
-    <h3> Add a new user, it's fast and easy...</h3>
-    <input type="text" id="fullName" value="" placeholder="Full name"> <br>
-    <input type="text" id="email" placeholder="Email"> <br>
-    <input type="text" id="phone" placeholder="Phone"> <br>
-    <input type="text" id="pics" placeholder="Profile Picture"> <br>
-    <button onclick="addNewCase()">add</button>
-    <hr>
-    <div style="width: 1000px; display: grid; place-items: center;">
-        <form class="form form-control-lg">
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" class="form-control" id="fullName" placeholder="fullName">
-            </div>
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-hand-down"></i></span>
-                <input type="email" class="form-control" id="email" placeholder="Email">
-            </div>
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-            <div class="input-group  input-group-lg">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
-                <input id="cpassword" type="password" class="form-control" name="password" placeholder="confirm Password">
-            </div>
+    <h3 class="header page-header" style="text-align: center;"> REMLAD PAGE</h3>
 
-            <div class="input-group input-group-sm">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                <input type="phone" class="form-control" id="phone" placeholder="phone-Number">
-            </div>
-            <div class="input-group input-group-sm">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-                <input type="txt" class="form-control" id="pics" placeholder="Picture">
-            </div>
-        </form>
-        <br>
+    <div style="display: flex; width:90% ; margin: auto;">
+        <div style="margin-right:100px;">
+            <form class="form form-control-lg">
+                <div class="input-group input-group-lg input-lg bg-success">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" class="form-control" id="fullName" placeholder="fullName">
+                </div>
+                <div class="input-group input-group-lg input-lg bg-success">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="input-group input-group-lg input-lg bg-success">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <div class="input-group  input-group-lg input-lg bg-success">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
+                    <input id="cpassword" type="password" class="form-control" name="password" placeholder="confirm Password">
+                </div>
+
+
+                <div class="input-group input-group-lg input-lg bg-success">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                    <input type="tel" class="form-control" id="phone" placeholder="phone-Number">
+                </div>
+                <div class="input-group input-group-lg input-lg bg-success">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                    <input type="text" class="form-control" id="pics" placeholder="profilePics">
+                </div>
+            </form>
+
+            <button class="btn btn-lg btn-info btn-group-justified" style="margin-top: 20px;" onclick="addNewCase()">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
+        </div>
+
+        <div>
+            <h3 style="text-align: center;font-size: large;">LOGIN PAGE</h3>
+            <form class="form form-control-lg">
+
+                <div class="input-group input-group-lg input-lg bg-primary">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="email" class="form-control" id="email2" placeholder="Email">
+                </div>
+                <div class="input-group input-group-lg input-lg bg-primary">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
+                    <input id="password2" type="password" class="form-control" name="password2" placeholder="Password">
+                </div>
+
+                <button class="btn btn-lg btn-info btn-group-justified" style="margin-top: 20px;" onclick="signIn()">SIGN IN <span class="glyphicon glyphicon-log-in"></span></button>
+                <hr>
+            </form>
+        </div>
     </div>
-
+    <hr>
     <div id="general"></div>
 
 
@@ -56,16 +73,20 @@
         let generalUser = [{
             fullname: " Aisha Opaluwa",
             email: "opaluwaaisha@yahoo.co",
+            password: 1234,
+            cpassword: 1234,
             phone: +971456432,
             pics: "/4.jpg"
 
         }, {
             fullname: " Aisha Shittu",
             email: "shittuaisha@yahoo.co",
+            password: 1234,
+            cpassword: 1234,
             phone: +19714526432,
             pics: "/1.jpg"
         }]
-        localStorage.setItem("myStorage", JSON.stringify(generalUser))
+        localStorage.setItem("Storage", JSON.stringify(generalUser))
 
         //
 
@@ -74,19 +95,25 @@
         function projectUser() {
             usersDetails = '';
             for (i = 0; i < generalUser.length; i++) {
-                usersDetails += `<div> 
-                        <img src = "${generalUser[i].profilePics}"  style = "max-height:100px; border-radius:5px"> <br>
-                        <strong> FULLNAME: </strong> ${generalUser[i].fullname}<br> 
-                        <strong> Email: </strong> ${generalUser[i].email}<br> 
-                        <strong> phone</strong> ${generalUser[i].phone}<br>
-                        <button onclick="editBtn(${i})" class= " btn btn-sm btn-success"><span class="glyphicon glyphicon-delete"></span> Edit</button>
-        <button onclick="redBtn(${i})" class= "btn btn-sm btn-danger"> Delete</button>
-        
+                usersDetails += `
+                <div class="container bg-success" style= "width:300px;display:grid; place-items:center; align-items:center; border:3px solid green;padding-bottom:20px;border-radius:8px; box-shadow:5px 5px 5px 2px black">
+               
+               <img class="img-thumbnail"  src= "${generalUser[i].profilePics}" style= "max-height:100px"><br>
+               <strong>full-name:</strong>  ${generalUser[i].fullname}<br>
+              
+               <strong> Email: </strong> ${generalUser[i].email}<br>
+               <strong> Password: </strong> ${generalUser[i].password}<br>
+               <strong> Confirm Password: </strong> ${generalUser[i].cpassword}<br>
+               <strong> phone</strong> ${generalUser[i].phone}<br>
+               <div  style= "display:flex; gap:30px"  >
+                <button onclick="editBtn(${i})" class= " btn btn-sm btn-success"><span class="glyphicon glyphicon-delete"></span> Edit</button>
+                <button onclick="redBtn(${i})" class= "btn btn-sm btn-danger"> Delete</button>
+              </div>
                         </div><hr> `
 
             }
             document.getElementById("general").innerHTML = usersDetails;
-            localStorage.setItem("myStorage", JSON.stringify(generalUser))
+            localStorage.setItem("Storage", JSON.stringify(generalUser))
 
         }
 
@@ -94,16 +121,29 @@
 
 
         function addNewCase() {
-            newUser = {
-                fullname: document.getElementById("fullName").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                profilePics: document.getElementById("pics").value
+            password = document.getElementById("password").value
+            cpassword = document.getElementById("cpassword").value
+            if (password === cpassword) {
 
+
+
+
+
+                newUser = {
+                    fullname: document.getElementById("fullName").value,
+                    email: document.getElementById("email").value,
+                    password: document.getElementById("password").value,
+                    cpassword: document.getElementById("cpassword").value,
+                    phone: document.getElementById("phone").value,
+                    profilePics: document.getElementById("pics").value
+
+                }
+                generalUser.push(newUser)
+                localStorage.setItem("Storage", JSON.stringify(generalUser))
+                projectUser()
+            } else {
+                alert("password mismatch")
             }
-            generalUser.push(newUser)
-            localStorage.setItem("myStorage", JSON.stringify(generalUser))
-            projectUser()
         }
 
 
@@ -111,7 +151,7 @@
             // confirm("are you sure?");
             // if (confirm === true) {
             generalUser.splice(id, 1)
-            localStorage.setItem("myStorage", JSON.stringify(generalUser))
+            localStorage.setItem("Storage", JSON.stringify(generalUser))
             projectUser()
 
         }
@@ -124,13 +164,33 @@
 
                 fullname: document.getElementById("fullName").value,
                 email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                cpassword: document.getElementById("cpassword").value,
                 phone: document.getElementById("phone").value,
                 profilePics: document.getElementById("pics").value
             }
             generalUser[id] = userEdit
-            localStorage.setItem("myStorage", JSON.stringify(generalUser));
+            localStorage.setItem("Storage", JSON.stringify(generalUser));
             projectUser()
 
+        }
+
+        function signIn() {
+            let calledUser = JSON.parse(localStorage.getItem("Storage"));
+            let passwordCheck = document.getElementById("password2").value
+
+            let emailUsers = document.getElementById("email2").value
+
+            if (calledUser.find(actualpassword => actualpassword.password == passwordCheck) && (calledUser.find(emailaddress => emailaddress.email == emailUsers))) {
+
+
+
+                alert("success")
+
+
+            } else {
+                alert("record not found")
+            }
         }
     </script>
 </body>
