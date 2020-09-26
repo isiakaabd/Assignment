@@ -61,7 +61,11 @@
        <strong>Email:</strong>  ${internalUsers[i].email}<br>
          
       <strong>Phone:</strong>  ${internalUsers[i].phone}<br>
-      <div style= "display:flex; gap:30px" >
+     
+        <div  style= "display:flex; gap:30px"  >
+                <button onclick="editBtn(${i})" class= " btn btn-sm btn-success"><span class="glyphicon glyphicon-delete"></span> Edit</button>
+                <button onclick="redBtn(${i})" class= "btn btn-sm btn-danger"> Delete</button>
+              </div>
       </div>
     
     </div><hr>`
@@ -96,17 +100,13 @@
 
 
         function redBtn(id) {
-            // confirm("are you sure?");
-            // if (confirm === true) {
+
             internalUsers.splice(id, 1)
+
+            localStorage.setItem("myStorage", JSON.stringify(internalUsers))
             displayUsers()
 
-            // }
-            //  else {
-            //     alert("thank you")
-            // }
         }
-        localStorage.setItem("myStorage", JSON.stringify(internalUsers))
 
 
         function editBtn(id) {

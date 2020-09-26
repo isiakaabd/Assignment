@@ -44,7 +44,8 @@
                 </div>
             </form>
 
-            <button class="btn btn-lg btn-info btn-group-justified" style="margin-top: 20px;" onclick="addNewCase()">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
+            <button class="btn btn-lg btn-info" style="margin: 30px;" onclick="addNewCase()">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
+            <button class="btn btn-lg btn-info" style="margin-left: 20px;" onclick="update(${i})"> Update<span class="glyphicon glyphicon-check"></span></button>
         </div>
 
         <div>
@@ -61,6 +62,7 @@
                 </div>
 
                 <button class="btn btn-lg btn-info btn-group-justified" style="margin-top: 20px;" onclick="signIn()">SIGN IN <span class="glyphicon glyphicon-log-in"></span></button>
+
                 <hr>
             </form>
         </div>
@@ -70,25 +72,10 @@
 
 
     <script>
-        let generalUser = [{
-            fullname: " Aisha Opaluwa",
-            email: "opaluwaaisha@yahoo.co",
-            password: 1234,
-            cpassword: 1234,
-            phone: +971456432,
-            pics: "/4.jpg"
+        // comment
+        // the (storagei.e the one on local storage )is  empty 
 
-        }, {
-            fullname: " Aisha Shittu",
-            email: "shittuaisha@yahoo.co",
-            password: 1234,
-            cpassword: 1234,
-            phone: +19714526432,
-            pics: "/1.jpg"
-        }]
-        localStorage.setItem("Storage", JSON.stringify(generalUser))
-
-        //
+        let generalUser = JSON.parse(localStorage.getItem("Storage"))
 
         projectUser()
 
@@ -113,7 +100,7 @@
 
             }
             document.getElementById("general").innerHTML = usersDetails;
-            localStorage.setItem("Storage", JSON.stringify(generalUser))
+
 
         }
 
@@ -140,20 +127,22 @@
                 }
                 generalUser.push(newUser)
                 localStorage.setItem("Storage", JSON.stringify(generalUser))
+
                 projectUser()
             } else {
                 alert("password mismatch")
             }
+            projectUser()
         }
 
 
         function redBtn(id) {
-            // confirm("are you sure?");
-            // if (confirm === true) {
-            generalUser.splice(id, 1)
-            localStorage.setItem("Storage", JSON.stringify(generalUser))
-            projectUser()
+            if (confirm("Do you want to delete?")) {
+                generalUser.splice(id, 1)
+                localStorage.setItem("Storage", JSON.stringify(generalUser))
+                projectUser()
 
+            }
         }
 
 
@@ -161,18 +150,24 @@
         function editBtn(id) {
 
             let userEdit = {
-
-                fullname: document.getElementById("fullName").value,
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value,
-                cpassword: document.getElementById("cpassword").value,
-                phone: document.getElementById("phone").value,
-                profilePics: document.getElementById("pics").value
+                fullname: document.getElementById("fullName").innerHTML = generalUser[id].fullname,
+                email: document.getElementById("email").innerHTML = generalUser[id].email,
+                password: document.getElementById("password").innerHTML = generalUser[id].password,
+                cpassword: document.getElementById("cpassword").innerHTML = generalUser[id].cpassword,
+                phone: document.getElementById("phone").innerHTML = generalUser[id].phone,
+                profilePics: document.getElementById("fullName").innerHTML = generalUser[id].profilePics,
+                //fullname: generalUser[id].fullname
             }
+            generalUser[id] = userEdit
+
+
+        }
+
+        function update(id) {
+
             generalUser[id] = userEdit
             localStorage.setItem("Storage", JSON.stringify(generalUser));
             projectUser()
-
         }
 
         function signIn() {
