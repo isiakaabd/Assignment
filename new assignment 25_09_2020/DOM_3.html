@@ -45,7 +45,7 @@
             </form>
 
             <button class="btn btn-lg btn-info" style="margin: 30px;" onclick="addNewCase()">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
-            <button class="btn btn-lg btn-info" style="margin-left: 20px;" onclick="update(${i})"> Update<span class="glyphicon glyphicon-check"></span></button>
+            <button class="btn btn-lg btn-info" style="margin-left: 20px;" onclick="update(${id})"> Update<span class="glyphicon glyphicon-check"></span></button>
         </div>
 
         <div>
@@ -68,7 +68,7 @@
         </div>
     </div>
     <hr>
-    <div id="general"></div>
+    <div style="display: flex; flex-wrap: wrap; margin:30px" id="general"></div>
 
 
     <script>
@@ -83,7 +83,7 @@
             usersDetails = '';
             for (i = 0; i < generalUser.length; i++) {
                 usersDetails += `
-                <div class="container bg-success" style= "width:300px;display:grid; place-items:center; align-items:center; border:3px solid green;padding-bottom:20px;border-radius:8px; box-shadow:5px 5px 5px 2px black">
+                <div class="container bg-success" style= "width:300px;display:grid; place-items:center; margin-bottom:20px; align-items:center; border:3px solid green;padding-bottom:20px;border-radius:8px; box-shadow:5px 5px 5px 2px black">
                
                <img class="img-thumbnail"  src= "${generalUser[i].profilePics}" style= "max-height:100px"><br>
                <strong>full-name:</strong>  ${generalUser[i].fullname}<br>
@@ -110,7 +110,12 @@
         function addNewCase() {
             password = document.getElementById("password").value
             cpassword = document.getElementById("cpassword").value
-            if (password === cpassword) {
+            fullname = document.getElementById("fullName").value
+            phone = document.getElementById("phone").value
+            if (fullname.length === 0 || phone.length === 0) {
+                alert("input a valid detail")
+
+            } else if (password === cpassword && password.length > 5 && cpassword > 5) {
 
 
 
@@ -125,13 +130,14 @@
                     profilePics: document.getElementById("pics").value
 
                 }
-                generalUser.push(newUser)
+
+                generalUser.unshift(newUser)
                 localStorage.setItem("Storage", JSON.stringify(generalUser))
 
-                projectUser()
             } else {
-                alert("password mismatch")
+                alert("password mismatch or check the password length")
             }
+
             projectUser()
         }
 
@@ -163,10 +169,18 @@
         }
 
         function update(id) {
-
-            generalUser[id] = userEdit
+            let updateRecord = {
+                fullname: document.getElementById("fullName").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                cpassword: document.getElementById("cpassword").value,
+                phone: document.getElementById("phone").value,
+                profilePics: document.getElementById("pics").value
+            }
+            generalUser[id] = updateRecord
             localStorage.setItem("Storage", JSON.stringify(generalUser));
             projectUser()
+
         }
 
         function signIn() {
@@ -183,7 +197,7 @@
 
 
             } else {
-                alert("record not found")
+                alert("Incorrect Email or password")
             }
         }
     </script>
