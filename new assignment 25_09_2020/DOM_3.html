@@ -149,16 +149,15 @@
 
         function editBtn(id) {
 
-            let userEdit = {
-                fullname: document.getElementById("fullName").innerHTML = generalUser[id].fullname,
-                email: document.getElementById("email").innerHTML = generalUser[id].email,
-                password: document.getElementById("password").innerHTML = generalUser[id].password,
-                cpassword: document.getElementById("cpassword").innerHTML = generalUser[id].cpassword,
-                phone: document.getElementById("phone").innerHTML = generalUser[id].phone,
-                profilePics: document.getElementById("fullName").innerHTML = generalUser[id].profilePics,
-                //fullname: generalUser[id].fullname
-            }
-            generalUser[id] = userEdit
+            // let userEdit = generalUser[id]
+            document.getElementById("fullName").value = generalUser[id].fullname
+            document.getElementById("email").value = generalUser[id].email
+            document.getElementById("password").value = generalUser[id].password
+            document.getElementById("cpassword").value = generalUser[id].cpassword
+            document.getElementById("phone").value = generalUser[id].phone
+            document.getElementById("pics").value = generalUser[id].profilePics
+
+
 
 
         }
