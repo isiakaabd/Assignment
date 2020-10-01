@@ -10,53 +10,55 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <h3 class="header page-header" style="text-align: center;"> REMLAD PAGE</h3>
+<body style="background: linear-gradient( 20deg, green 30%, blue 50%);z-index: -1;">
+    <h3 class="header page-header" style="text-align: center;color: #ffffff;"> REMLAD PAGE</h3>
 
     <div style="display: flex; width:90% ; margin: auto;">
-        <div style="margin-right:100px;">
+        <div style="margin-right:100px ;width: 70%;">
             <form class="form form-control-lg">
-                <div class="input-group input-group-lg input-lg bg-success">
+                <input type="hidden" id="index">
+
+                <div style="margin-bottom: 10px;" class="input-group input-group-lg input-lg bg-success">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input type="text" class="form-control" id="fullName" placeholder="fullName">
                 </div>
-                <div class="input-group input-group-lg input-lg bg-success">
+                <div style="margin-bottom: 10px;" class="input-group input-group-lg input-lg bg-success">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                     <input type="email" class="form-control" id="email" placeholder="Email">
                 </div>
-                <div class="input-group input-group-lg input-lg bg-success">
+                <div style="margin-bottom: 10px;" class="input-group input-group-lg input-lg bg-success">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
                     <input id="password" type="password" class="form-control" name="password" placeholder="Password">
                 </div>
-                <div class="input-group  input-group-lg input-lg bg-success">
+                <div style="margin-bottom: 10px;" class="input-group  input-group-lg input-lg bg-success">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
                     <input id="cpassword" type="password" class="form-control" name="password" placeholder="confirm Password">
                 </div>
 
 
-                <div class="input-group input-group-lg input-lg bg-success">
+                <div style="margin-bottom: 10px;" class="input-group input-group-lg input-lg bg-success">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
                     <input type="tel" class="form-control" id="phone" placeholder="phone-Number">
                 </div>
-                <div class="input-group input-group-lg input-lg bg-success">
+                <div style="margin-bottom: 10px;" class="input-group input-group-lg input-lg bg-success">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
                     <input type="text" class="form-control" id="pics" placeholder="profilePics">
                 </div>
             </form>
-
-            <button class="btn btn-lg btn-info" style="margin: 30px;" onclick="addNewCase()">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
-            <button class="btn btn-lg btn-info" style="margin-left: 20px;" onclick="update(${id})"> Update<span class="glyphicon glyphicon-check"></span></button>
+            <div style="display: flex;justify-content: center;margin-top: 30px;gap:30px">
+                <button class="btn btn-lg btn-info" onclick="addNewCase()">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button class="btn btn-lg btn-info" onclick="update()"> Update<span class="glyphicon glyphicon-check"></span></button>
+            </div>
         </div>
-
         <div>
-            <h3 style="text-align: center;font-size: large;">LOGIN PAGE</h3>
+            <h3 style="text-align: center;font-size: large;color: #ffffff;">LOGIN PAGE</h3>
             <form class="form form-control-lg">
 
-                <div class="input-group input-group-lg input-lg bg-primary">
+                <div style="margin-bottom: 10px;" class="input-group input-group-lg input-lg bg-primary">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                     <input type="email" class="form-control" id="email2" placeholder="Email">
                 </div>
-                <div class="input-group input-group-lg input-lg bg-primary">
+                <div style="margin-bottom: 10px;" class="input-group input-group-lg input-lg bg-primary">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-eye-close"></i></span>
                     <input id="password2" type="password" class="form-control" name="password2" placeholder="Password">
                 </div>
@@ -68,21 +70,32 @@
         </div>
     </div>
     <hr>
-    <div style="display: flex; flex-wrap: wrap; margin:30px" id="general"></div>
+    <div style="display: flex; justify-content: center;">
+        <input style="padding: 10px; width:60%; " type="search" name="" placeholder="search by email" id="search">
+        <button class="btn btn-lg btn-info" style="margin-left: 20px;" onclick="search()"> SEARCH<span class="glyphicon glyphicon-search"></span></button>
+        <br>
+    </div>
+    <h3 style="color:rgb(5, 2, 2); text-align:center" id="userRecord"></h3>
+
+
+    <hr>
+    <div style="display: flex; flex-wrap: wrap; width:90%;margin:30px" id="general"></div>
 
 
     <script>
-        // comment
+        // omment
         // the (storagei.e the one on local storage )is  empty 
-
+        let i = 0;
         let generalUser = JSON.parse(localStorage.getItem("Storage"))
 
         projectUser()
+
 
         function projectUser() {
             usersDetails = '';
             for (i = 0; i < generalUser.length; i++) {
                 usersDetails += `
+               
                 <div class="container bg-success" style= "width:300px;display:grid; place-items:center; margin-bottom:20px; align-items:center; border:3px solid green;padding-bottom:20px;border-radius:8px; box-shadow:5px 5px 5px 2px black">
                
                <img class="img-thumbnail"  src= "${generalUser[i].profilePics}" style= "max-height:100px"><br>
@@ -153,22 +166,24 @@
 
 
 
-        function editBtn(id) {
 
-            // let userEdit = generalUser[id]
-            document.getElementById("fullName").value = generalUser[id].fullname
-            document.getElementById("email").value = generalUser[id].email
-            document.getElementById("password").value = generalUser[id].password
-            document.getElementById("cpassword").value = generalUser[id].cpassword
-            document.getElementById("phone").value = generalUser[id].phone
-            document.getElementById("pics").value = generalUser[id].profilePics
+        // function update(id) {
+        //     let updateRecord = {
+        //         fullname: document.getElementById("fullName").value,
+        //         email: document.getElementById("email").value,
+        //         password: document.getElementById("password").value,
+        //         cpassword: document.getElementById("cpassword").value,
+        //         phone: document.getElementById("phone").value,
+        //         profilePics: document.getElementById("pics").value
+        //     }
+        //     generalUser[id] = updateRecord
+        //     localStorage.setItem("Storage", JSON.stringify(generalUser));
+        //     projectUser()
 
+        // }
+        function update() {
+            i = document.getElementById("index").value
 
-
-
-        }
-
-        function update(id) {
             let updateRecord = {
                 fullname: document.getElementById("fullName").value,
                 email: document.getElementById("email").value,
@@ -176,29 +191,81 @@
                 cpassword: document.getElementById("cpassword").value,
                 phone: document.getElementById("phone").value,
                 profilePics: document.getElementById("pics").value
+
             }
-            generalUser[id] = updateRecord
+            generalUser[i] = updateRecord
             localStorage.setItem("Storage", JSON.stringify(generalUser));
             projectUser()
+
+
+        }
+
+        // function editBtn(id) {
+        // my method
+        // let userEdit = generalUser[id]
+        // document.getElementById("fullName").value = generalUser[id].fullname
+        // document.getElementById("email").value = generalUser[id].email
+        // document.getElementById("password").value = generalUser[id].password
+        // document.getElementById("cpassword").value = generalUser[id].cpassword
+        // document.getElementById("phone").value = generalUser[id].phone
+        // document.getElementById("pics").value = generalUser[id].profilePics
+        function editBtn(i) {
+            userEdit = generalUser[i]
+            document.getElementById("fullName").value = userEdit.fullname
+            document.getElementById("email").value = userEdit.email
+            document.getElementById("phone").value = userEdit.phone
+            document.getElementById("password").value = userEdit.password
+            document.getElementById("cpassword").value = userEdit.cpassword
+            document.getElementById("pics").value = userEdit.profilePics
+            document.getElementById("index").value = i
+
+
 
         }
 
         function signIn() {
-            let calledUser = JSON.parse(localStorage.getItem("Storage"));
+            ///let calledUser = JSON.parse(localStorage.getItem("Storage"));
             let passwordCheck = document.getElementById("password2").value
 
             let emailUsers = document.getElementById("email2").value
 
-            if (calledUser.find(actualpassword => actualpassword.password == passwordCheck) && (calledUser.find(emailaddress => emailaddress.email == emailUsers))) {
+            if (generalUser.find(actualpassword => actualpassword.password == passwordCheck) && (generalUser.find(emailaddress => emailaddress.email == emailUsers))) {
 
 
 
                 alert("success")
 
 
+                projectUser()
             } else {
                 alert("Incorrect Email or password")
             }
+        }
+
+        function search() {
+            searchResult = document.getElementById("search").value;
+            searchResult = searchResult.toLowerCase()
+
+            // let searchedUser = JSON.parse(localStorage.getItem("Storage"));
+
+            generalUser = generalUser.filter(index => index.email === searchResult)
+
+            if (generalUser === null || generalUser === undefined || generalUser.length == 0) {
+
+                alert("no  record found for " + searchResult)
+
+            } else if ((generalUser != null) && (generalUser != undefined) && (generalUser.length > 1)) {
+                document.getElementById("userRecord").innerHTML = generalUser.length + " records found"
+                projectUser()
+            } else if (((generalUser != null) && (generalUser != undefined) && (generalUser.length === 1))) {
+                document.getElementById("userRecord").innerHTML = generalUser.length + " record found"
+
+
+
+            }
+
+            projectUser()
+
         }
     </script>
 </body>
