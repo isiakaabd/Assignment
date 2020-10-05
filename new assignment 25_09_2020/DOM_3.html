@@ -86,7 +86,7 @@
         // omment
         // the (storagei.e the one on local storage )is  empty 
         let i = 0;
-        let generalUser = JSON.parse(localStorage.getItem("Storage"))
+        let generalUser = JSON.parse(localStorage.getItem("myStorage"))
 
         projectUser()
 
@@ -145,7 +145,7 @@
                 }
 
                 generalUser.unshift(newUser)
-                localStorage.setItem("Storage", JSON.stringify(generalUser))
+                localStorage.setItem("myStorage", JSON.stringify(generalUser))
 
             } else {
                 alert("password mismatch or check the password length")
@@ -158,7 +158,7 @@
         function redBtn(id) {
             if (confirm("Do you want to delete?")) {
                 generalUser.splice(id, 1)
-                localStorage.setItem("Storage", JSON.stringify(generalUser))
+                localStorage.setItem("myStorage", JSON.stringify(generalUser))
                 projectUser()
 
             }
@@ -194,7 +194,7 @@
 
             }
             generalUser[i] = updateRecord
-            localStorage.setItem("Storage", JSON.stringify(generalUser));
+            localStorage.setItem("myStorage", JSON.stringify(generalUser));
             projectUser()
 
 
