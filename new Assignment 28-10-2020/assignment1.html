@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #contain {
+            display: none;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: yellow;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        @-webkit-keyframes Moves {
+            0% {
+                background-color: yellow;
+            }
+            100% {
+                background-color: green;
+                width: 255px;
+                height: 255px;
+            }
+        }
+        
+        @keyframes Moves {
+            0% {
+                background-color: yellow;
+            }
+            100% {
+                background-color: green;
+                width: 255px;
+                height: 255px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button type="submit" onclick="display()">SHOW MESSAGE</button>
+    <br><br>
+    <div id="contain"></div>
+    <script>
+        var x = document.getElementById("contain");
+        //Starts the animation
+        async function display() {
+            x.style.display = "block";
+            x.style.WebkitAnimation = "Moves 4s 1";
+            x.style.animation = "Moves 4s 1";
+            animate = x.addEventListener("animationend", function handler() {
+                setDisplay();
+            });
+            await animate;
+        }
+        //COntainer for Tiidelab message
+        async function setDisplay() {
+            x.style.backgroundColor = "green";
+            x.style.width = "255px"
+            x.style.height = "255px"
+            x.style.color = "white";
+            await Text();
+        }
+        //adding Tiidelab
+        function Text() {
+            container = document.getElementById("contain")
+            newEle = document.createElement("h1");
+            newEle.height = "30px";
+            newEle.display = "flex";
+
+            newEle.innerHTML = "TIIDELAB..";
+            container.append(newEle);
+        }
+    </script>
+</body>
+
+</html>
